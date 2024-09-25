@@ -1,3 +1,5 @@
+/* gallery.css */
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -23,7 +25,7 @@ h1 span {
 }
 
 .container {
-    width: 90%; 
+    width: 80%;
     padding: 50px 0;
     margin: 50px auto;
     position: relative;
@@ -43,28 +45,10 @@ h1 span {
 }
 
 .timeline-block {
-    width: -webkit-calc(50% - 20px);
-    width: -moz-calc(50% - 20px);
-    width: calc(50% - 20px);
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
     display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -moz-box-pack: justify;
     justify-content: space-between;
-    clear: both;
-    margin-bottom: 30px; 
-}
-
-.timeline-block-right {
-    float: right;
-}
-
-.timeline-block-left {
-    float: left;
-    direction: rtl;
+    margin-bottom: 30px;
+    position: relative;
 }
 
 .marker {
@@ -73,17 +57,33 @@ h1 span {
     border-radius: 50%;
     border: 2px solid #F5F7FA;
     background: #4FC1E9;
-    margin-top: 10px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
     z-index: 9999;
 }
 
 .timeline-content {
-    width: 100%; 
+    width: 45%;
     padding: 0 15px;
     color: #666;
 }
 
-.timeline-content h3 {
+.timeline-content-left {
+    
+    text-align: left;
+    margin-left: 0; /* Remove margin to align with the marker */
+    padding-right: 15px; /* Add padding to align text with the marker */
+}
+
+.timeline-content-right {
+    text-align: left;
+    margin-right: 0; /* Remove margin to align with the marker */
+    padding-left: 15px; /* Add padding to align text with the marker */
+}
+
+.timeline-content h3, .timeline-content h2 {
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 25px;
@@ -100,6 +100,21 @@ h1 span {
     line-height: 1.5em;
     word-spacing: 1px;
     color: #888;
+}
+
+.timeline-content ul {
+    list-style-position: inside; /* Ensure bullets are inside the content box */
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-content-left ul, .timeline-content-right ul {
+    padding: 0; /* Remove padding to align with the marker */
+}
+
+.timeline-content li {
+    text-align: left; /* Ensure list items are aligned to the left */
+    margin-left: 0; /* Remove left margin for better alignment */
 }
 
 .gallery-item {
@@ -150,15 +165,14 @@ h1 span {
         width: 2px;
     }
     .timeline-block {
+        flex-direction: column;
+        align-items: center;
+    }
+    .timeline-content {
         width: 100%;
-        margin-bottom: 30px;
+        text-align: center;
     }
-    .timeline-block-right {
-        float: none;
-    }
-
-    .timeline-block-left {
-        float: none;
-        direction: ltr;
+    .timeline-content-left, .timeline-content-right {
+        text-align: center;
     }
 }
