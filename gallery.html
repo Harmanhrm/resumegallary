@@ -9,30 +9,58 @@
 <body>
     <h1>Resume Gallery</h1>
     <div class="gallery">
-        <div class="gallery-item">
-            <iframe src="resumes/resume_1.pdf"></iframe>
+        <div class="gallery-item" data-src="resumes/resume_1.pdf">
+            <img src="thumbnails/resume_1.png" alt="Resume 1">
         </div>
-        <div class="gallery-item">
-            <iframe src="resumes/resume_2.pdf"></iframe>
+        <div class="gallery-item" data-src="resumes/resume_2.pdf">
+            <img src="thumbnails/resume_2.png" alt="Resume 2">
         </div>
-        <div class="gallery-item">
-            <iframe src="resumes/resume_3.pdf"></iframe>
+        <div class="gallery-item" data-src="resumes/resume_3.pdf">
+            <img src="thumbnails/resume_3.png" alt="Resume 3">
         </div>
-        <div class="gallery-item">
-            <iframe src="resumes/resume_4.pdf"></iframe>
+        <div class="gallery-item" data-src="resumes/resume_4.pdf">
+            <img src="thumbnails/resume_4.png" alt="Resume 4">
         </div>
-        <div class="gallery-item">
-            <iframe src="resumes/resume_5.pdf"></iframe>
+        <div class="gallery-item" data-src="resumes/resume_5.pdf">
+            <img src="thumbnails/resume_5.png" alt="Resume 5">
         </div>
-        <div class="gallery-item">
-            <iframe src="resumes/resume_6.pdf"></iframe>
+        <div class="gallery-item" data-src="resumes/resume_6.pdf">
+            <img src="thumbnails/resume_6.png" alt="Resume 6">
         </div>
-        <div class="gallery-item">
-            <iframe src="resumes/resume_7.pdf"></iframe>
+        <div class="gallery-item" data-src="resumes/resume_7.pdf">
+            <img src="thumbnails/resume_7.png" alt="Resume 7">
         </div>
-        <div class="gallery-item">
-            <iframe src="resumes/resume_8.pdf"></iframe>
+        <div class="gallery-item" data-src="resumes/resume_8.pdf">
+            <img src="thumbnails/resume_8.png" alt="Resume 8">
         </div>
     </div>
+    <div class="overlay"></div>
+
+    <script>
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const src = item.getAttribute('data-src');
+                const iframe = document.createElement('iframe');
+                iframe.src = src;
+                item.innerHTML = '';
+                item.appendChild(iframe);
+                item.classList.add('expanded');
+                document.querySelector('.overlay').classList.add('active');
+            });
+        });
+
+        document.querySelector('.overlay').addEventListener('click', () => {
+            document.querySelectorAll('.gallery-item.expanded').forEach(item => {
+                const src = item.getAttribute('data-src');
+                const img = document.createElement('img');
+                img.src = `thumbnails/${src.split('/').pop().replace('.pdf', '.png')}`;
+                img.alt = item.querySelector('iframe').src.split('/').pop().replace('.pdf', '');
+                item.innerHTML = '';
+                item.appendChild(img);
+                item.classList.remove('expanded');
+            });
+            document.querySelector('.overlay').classList.remove('active');
+        });
+    </script>
 </body>
 </html>
