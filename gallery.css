@@ -23,6 +23,9 @@
     border-top: 2px solid #333;
     margin-top: -2px; 
 }
+body.no-scroll {
+    overflow: hidden;
+}
 body {
     margin: 0;
     padding: 30px 0;
@@ -153,11 +156,30 @@ h1 span {
     height: 80%;
     z-index: 1000;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-
+.download-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #4FC1E9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+.download-button:hover {
+    background-color: #3ba8d1;
+}
 .gallery-item iframe {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px); /* Adjust height to leave space for the download button */
     border: none;
 }
 
@@ -171,9 +193,12 @@ h1 span {
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
-
+.hidden {
+    display:none;
+}
 .overlay.active {
     display: block;
+    z-index: 999;
 }
 
 @media screen and (max-width: 768px) {

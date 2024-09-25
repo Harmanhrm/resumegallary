@@ -168,13 +168,25 @@
                 const src = item.getAttribute('data-src');
                 const iframe = document.createElement('iframe');
                 iframe.src = src;
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
                 item.innerHTML = '';
                 item.appendChild(iframe);
                 item.classList.add('expanded');
                 document.querySelector('.overlay').classList.add('active');
+                document.body.classList.add('no-scroll'); // Prevent body from scrolling
+    
+               
+                const downloadButton = document.createElement('button');
+                downloadButton.classList.add('download-button');
+                downloadButton.textContent = 'Download PDF';
+                downloadButton.addEventListener('click', () => {
+                    window.open(src, '_blank');
+                });
+                item.appendChild(downloadButton);
             });
         });
-
+    
         document.querySelector('.overlay').addEventListener('click', () => {
             document.querySelectorAll('.gallery-item.expanded').forEach(item => {
                 const src = item.getAttribute('data-src');
@@ -186,6 +198,7 @@
                 item.classList.remove('expanded');
             });
             document.querySelector('.overlay').classList.remove('active');
+            document.body.classList.remove('no-scroll'); // Allow body to scroll again
         });
     </script>
 </body>
