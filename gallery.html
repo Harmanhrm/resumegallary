@@ -8,30 +8,85 @@
 </head>
 <body>
     <h1>Resume Gallery</h1>
-    <div class="gallery">
-        <div class="gallery-item" data-src="resumes/resume_1.pdf">
-            <img src="thumbnails/resume_1.png" alt="Resume 1">
+    <div class="container">
+        <div class="timeline-block timeline-block-right">
+            <div class="marker"></div>
+            <div class="timeline-content">
+                <h3>Jan 2020</h3>
+                <div class="gallery-item" data-src="resumes/resume_1.pdf">
+                    <img src="thumbnails/resume_1.png" alt="Resume 1">
+                </div>
+            </div>
         </div>
-        <div class="gallery-item" data-src="resumes/resume_2.pdf">
-            <img src="thumbnails/resume_2.png" alt="Resume 2">
+
+        <div class="timeline-block timeline-block-left">
+            <div class="marker"></div>
+            <div class="timeline-content">
+                <h3>Jun 2020</h3>
+                <div class="gallery-item" data-src="resumes/resume_2.pdf">
+                    <img src="thumbnails/resume_2.png" alt="Resume 2">
+                </div>
+            </div>
         </div>
-        <div class="gallery-item" data-src="resumes/resume_3.pdf">
-            <img src="thumbnails/resume_3.png" alt="Resume 3">
+
+        <div class="timeline-block timeline-block-right">
+            <div class="marker"></div>
+            <div class="timeline-content">
+                <h3>Dec 2020</h3>
+                <div class="gallery-item" data-src="resumes/resume_3.pdf">
+                    <img src="thumbnails/resume_3.png" alt="Resume 3">
+                </div>
+            </div>
         </div>
-        <div class="gallery-item" data-src="resumes/resume_4.pdf">
-            <img src="thumbnails/resume_4.png" alt="Resume 4">
+
+        <div class="timeline-block timeline-block-left">
+            <div class="marker"></div>
+            <div class="timeline-content">
+                <h3>May 2021</h3>
+                <div class="gallery-item" data-src="resumes/resume_4.pdf">
+                    <img src="thumbnails/resume_4.png" alt="Resume 4">
+                </div>
+            </div>
         </div>
-        <div class="gallery-item" data-src="resumes/resume_5.pdf">
-            <img src="thumbnails/resume_5.png" alt="Resume 5">
+
+        <div class="timeline-block timeline-block-right">
+            <div class="marker"></div>
+            <div class="timeline-content">
+                <h3>Nov 2021</h3>
+                <div class="gallery-item" data-src="resumes/resume_5.pdf">
+                    <img src="thumbnails/resume_5.png" alt="Resume 5">
+                </div>
+            </div>
         </div>
-        <div class="gallery-item" data-src="resumes/resume_6.pdf">
-            <img src="thumbnails/resume_6.png" alt="Resume 6">
+
+        <div class="timeline-block timeline-block-left">
+            <div class="marker"></div>
+            <div class="timeline-content">
+                <h3>Apr 2022</h3>
+                <div class="gallery-item" data-src="resumes/resume_6.pdf">
+                    <img src="thumbnails/resume_6.png" alt="Resume 6">
+                </div>
+            </div>
         </div>
-        <div class="gallery-item" data-src="resumes/resume_7.pdf">
-            <img src="thumbnails/resume_7.png" alt="Resume 7">
+
+        <div class="timeline-block timeline-block-right">
+            <div class="marker"></div>
+            <div class="timeline-content">
+                <h3>Sep 2022</h3>
+                <div class="gallery-item" data-src="resumes/resume_7.pdf">
+                    <img src="thumbnails/resume_7.png" alt="Resume 7">
+                </div>
+            </div>
         </div>
-        <div class="gallery-item" data-src="resumes/resume_8.pdf">
-            <img src="thumbnails/resume_8.png" alt="Resume 8">
+
+        <div class="timeline-block timeline-block-left">
+            <div class="marker"></div>
+            <div class="timeline-content">
+                <h3>Latest</h3>
+                <div class="gallery-item" data-src="resumes/resume_8.pdf">
+                    <img src="thumbnails/resume_8.png" alt="Resume 8">
+                </div>
+            </div>
         </div>
     </div>
     <div class="overlay"></div>
@@ -54,7 +109,7 @@
                 const src = item.getAttribute('data-src');
                 const img = document.createElement('img');
                 img.src = `thumbnails/${src.split('/').pop().replace('.pdf', '.png')}`;
-                img.alt = item.querySelector('iframe').src.split('/').pop().replace('.pdf', '');
+                img.alt = src.split('/').pop().replace('.pdf', '');
                 item.innerHTML = '';
                 item.appendChild(img);
                 item.classList.remove('expanded');
